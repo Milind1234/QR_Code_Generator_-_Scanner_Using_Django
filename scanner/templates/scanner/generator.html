@@ -1,0 +1,29 @@
+{% extends "core/base.html" %}
+{% block title %}Generate QR{% endblock title %}
+{% block heading %}Generate QR{% endblock heading %}
+
+{% block content %}
+  <div class="card">
+    <form method="post">
+      {% csrf_token %}
+      <label for="text">Text or URL</label>
+      <input type="text" id="text" name="text" placeholder="https://example.com or any text" required>
+
+      <div class="mt-1">
+        <button class="btn" type="submit">Generate QR</button>
+        <a class="btn secondary" href="{% url 'home' %}">Back</a>
+      </div>
+    </form>
+
+    {% if qr_url %}
+      <div class="qr-preview">
+        <img src="{{ qr_url }}" alt="Generated QR">
+        <div>
+          <div><strong>Result</strong></div>
+          <p class="small">{{ text }}</p>
+          <a class="btn" href="{{ qr_url }}" download>Download</a>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+{% endblock content %}

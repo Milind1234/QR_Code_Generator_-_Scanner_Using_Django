@@ -1,0 +1,28 @@
+{% extends "core/base.html" %}
+{% block title %}Scan QR{% endblock title %}
+{% block heading %}Scan QR{% endblock heading %}
+
+{% block content %}
+  <div class="card">
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <label for="image">Upload PNG / JPG image</label>
+      <input type="file" id="image" name="image" accept="image/*" required>
+
+      <div class="mt-1">
+        <button class="btn" type="submit">Scan</button>
+        <a class="btn secondary" href="{% url 'home' %}">Back</a>
+      </div>
+    </form>
+
+    {% if decoded_text %}
+      <div class="alert success">
+        <strong>Decoded:</strong>
+        <p>{{ decoded_text }}</p>
+        <p><a href="{{ decoded_text }}" target="_blank" class="small">Open (if URL)</a></p>
+      </div>
+    {% elif error %}
+      <div class="alert error">{{ error }}</div>
+    {% endif %}
+  </div>
+{% endblock content %}

@@ -1,0 +1,218 @@
+/* style.css — modern clean UI for QR Generator + Scanner */
+
+/* --- Basic reset & fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html,body { height: 100%; }
+body {
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg, #f6f8fb 0%, #ffffff 60%);
+  color: #1f2937;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height: 1.5;
+}
+
+/* --- Container & layout --- */
+.container {
+  max-width: 1080px;
+  margin: 2.25rem auto;
+  padding: 1.25rem;
+}
+
+/* --- Header / Navbar --- */
+.site-header {
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 6px 18px rgba(22, 38, 64, 0.06);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 1rem;
+}
+.brand {
+  display:flex;
+  align-items:center;
+  gap:.9rem;
+  text-decoration:none;
+  color: #0f172a;
+}
+.brand .logo {
+  width:44px;
+  height:44px;
+  border-radius:10px;
+  background: linear-gradient(135deg, #6366f1, #06b6d4);
+  display:inline-grid;
+  place-items:center;
+  color:white;
+  font-weight:700;
+  font-size:18px;
+  box-shadow: 0 6px 18px rgba(99,102,241,0.15);
+}
+.brand .title {
+  font-weight:700;
+  font-size:1.05rem;
+  letter-spacing: -0.2px;
+}
+
+.nav {
+  display:flex;
+  gap: .5rem;
+  align-items:center;
+}
+.nav a {
+  padding:.45rem .8rem;
+  border-radius:8px;
+  text-decoration:none;
+  color:#334155;
+  font-weight:600;
+  transition: all .15s ease;
+}
+.nav a:hover {
+  background: #eef2ff;
+  color:#312e81;
+  transform: translateY(-1px);
+}
+
+/* --- Hero / Page heading --- */
+.main-heading {
+  margin-top:1rem;
+  font-size:1.6rem;
+  font-weight:800;
+  color:#0b1220;
+}
+
+/* --- Card --- */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.1rem;
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.05);
+  margin-top:1.25rem;
+}
+
+/* --- Grid --- */
+.grid {
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+@media (max-width: 800px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+/* --- Forms --- */
+label {
+  display:block;
+  font-weight:600;
+  color:#0b1220;
+  margin-bottom:.35rem;
+}
+input[type="text"],
+input[type="file"],
+textarea,
+select {
+  width:100%;
+  padding:.7rem .9rem;
+  border:1px solid #e6e9ef;
+  border-radius:10px;
+  background:#fafbff;
+  outline: none;
+  transition: box-shadow .12s ease, border-color .12s ease;
+  font-size:0.95rem;
+}
+input:focus, textarea:focus {
+  box-shadow: 0 6px 18px rgba(99,102,241,0.12);
+  border-color: #6366f1;
+}
+
+/* --- Buttons --- */
+.btn {
+  display:inline-block;
+  padding:.6rem .95rem;
+  border-radius:10px;
+  background: linear-gradient(90deg, #6366f1, #06b6d4);
+  color:white;
+  font-weight:700;
+  border:none;
+  cursor:pointer;
+  text-decoration:none;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(6,182,212,0.08); }
+.btn.secondary {
+  background:transparent;
+  border:1px solid #e6e9ef;
+  color:#0b1220;
+  font-weight:600;
+}
+.btn.ghost {
+  background:transparent;
+  color:#6366f1;
+  border:1px dashed rgba(99,102,241,0.18);
+}
+
+/* --- QR preview --- */
+.qr-preview {
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  margin-top:1rem;
+}
+.qr-preview img {
+  width:220px;
+  height:220px;
+  object-fit:contain;
+  border-radius:8px;
+  background: #fff;
+  padding: .5rem;
+  border: 1px solid #f0f2f7;
+}
+
+/* --- small lists, recent --- */
+.recent-list {
+  display:flex;
+  gap:.8rem;
+  flex-wrap:wrap;
+  margin-top:.75rem;
+}
+.recent-item {
+  display:flex;
+  gap:.6rem;
+  align-items:center;
+  padding:.45rem .6rem;
+  border-radius:8px;
+  border:1px solid #eef2ff;
+  background: linear-gradient(180deg, #ffffff, #fbfdff);
+}
+
+/* --- Messages --- */
+.alert {
+  padding:.6rem .8rem;
+  border-radius:8px;
+  margin-top:.75rem;
+}
+.alert.error { background: #fff1f2; color:#9f1239; border:1px solid #fee2e2; }
+.alert.success { background: #ecfeff; color:#065f46; border:1px solid #bbf7d0; }
+
+/* --- Footer --- */
+.site-footer {
+  margin-top:2.25rem;
+  text-align:center;
+  color:#475569;
+  font-size:0.92rem;
+  padding:1rem;
+}
+
+/* --- Tiny utilities --- */
+.mt-1 { margin-top: .6rem; }
+.mb-1 { margin-bottom: .6rem; }
+.text-muted { color:#667085; }
+.small { font-size: .9rem; color:#475569; }
+
+/* --- Accessibility: focus outlines --- */
+a:focus, button:focus, input:focus { outline: 3px solid rgba(99,102,241,0.12); outline-offset:3px; }
