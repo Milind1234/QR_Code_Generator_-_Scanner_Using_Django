@@ -1,4 +1,5 @@
 {% extends "core/base.html" %}
+{% load humanize %}
 {% block title %}Home - QR App{% endblock title %}
 {% block heading %}Welcome{% endblock heading %}
 
@@ -28,7 +29,7 @@
             <img src="{{ item.image.url }}" alt="qr" width="48" height="48">
             <div>
               <div><strong>{{ item.text|truncatechars:30 }}</strong></div>
-              <div class="text-muted small">{{ item.created_at }}</div>
+              <div class="text-muted small">{{ item.created_at|naturaltime }}</div>
             </div>
           </div>
         {% endfor %}

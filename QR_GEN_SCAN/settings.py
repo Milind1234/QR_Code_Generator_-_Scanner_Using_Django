@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'core',
     'scanner',
 ]
@@ -81,6 +82,41 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+# ✅ add LOGGING config here
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "formatters": {
+        "simple": {"format": "[%(levelname)s] %(name)s:%(lineno)d %(message)s"},
+    },
+    "loggers": {
+        "": {  # root logger
+            "handlers": ["console"],
+            "level": "INFO",
+            "propagate": True,
+        },
+        "core": {  # module-level logger (optional)
+            "handlers": ["console"],
+            "level": "DEBUG",
+            "propagate": False,
+            "formatter": "simple",
+        },
+    },
+}
+
+# ✅ add CACHES config here
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        "LOCATION": "unique-qr-cache",
     }
 }
 
